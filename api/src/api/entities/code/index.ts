@@ -1,16 +1,6 @@
 import fs from 'fs'
 import { exec } from 'child_process'
-
-const mapLangInfo = (language: string) => {
-    switch(language) {
-        case "javascript":
-            return ['js', 'node']
-        case "python":
-            return ['py', 'python']
-        default: 
-            throw new Error("Invalid language")
-    }
-}
+import { mapLangInfo } from '../../utils'
 
 export const execCode = async (language: string, code: string) => {
     console.log("start executing code")

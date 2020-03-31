@@ -7,7 +7,7 @@ import express, {
 } from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import paths from './paths'
+import paths from './routes'
 
 export default class Router {
   public router: express.Router
