@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { exec } from 'child_process'
-import { mapLangInfo } from '../../utils'
+import { mapLangInfo } from '../../../utils'
 
 export const execCode = async (language: string, code: string) => {
     console.log("start executing code")

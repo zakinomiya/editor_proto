@@ -28,7 +28,7 @@ type Props = {
 const Editor: React.FC<Props> = ({language, value, setValue}) => (
     <AceEditor
       width="100%"
-      height="768px"
+      height="662px"
       mode={language}
       theme={'monokai'}
       name="blah2"

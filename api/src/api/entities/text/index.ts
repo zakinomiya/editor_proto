@@ -1,15 +1,21 @@
 import fs from 'fs'
-import { exec } from 'child_process'
-import { mapLangInfo } from '../../utils'
+import { mapLangInfo, readFileAsync } from '../../../utils'
 import { Textbook } from '../../../type/types'
 
-export const fetchText = (language: string, index: number) => {
+export const fetchTextbookInfo = (language: string, index: string): Promise<Textbook> => {
     console.log("start fetching text")
     const langInfo = mapLangInfo(language)
 
-    const fileName = `${langInfo}_${index}.${langInfo}`
-    return fs.readFile(fileName, (err, data) => {
-            if(err) throw new Error(JSON.stringify(err))
-            console.log("new file created")
+    const fileName = `${langInfo[0]}_${index}.${langInfo[0]}`
+    return new Promise(async (resolve, reject) => {
+        const textbookInfo = require(`${process.env.PWD}/src/texts/${fileName}`)
+        const markdown = await readFileAsync(`${process.env.PWD}/src/texts/${fileName.split(".")[0]}.md`)
+            .catch(e => {
+                reject(e)
+            })
+
+        if(!markdown) return reject("read file failed")
+
+        resolve({...textbookInfo, markdown})
     })
 }
