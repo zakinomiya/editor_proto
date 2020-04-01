@@ -21,3 +21,7 @@ cd ./scripts
 2. write code in the editor
 3. press 'console' button
 4. the result will appear in the console
+
+## Development
+
+api, editor内のそれぞれのREADME参照

@@ -1,6 +1,11 @@
 #!/bin/bash
 
-cd ../api
+cd ../ 
+
+docker-compose down 
+docker rm api editor
+
+cd ./api
 
 echo "building docker image: learn_api"
 

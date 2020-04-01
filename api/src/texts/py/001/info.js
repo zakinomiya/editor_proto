@@ -2,7 +2,7 @@ module.exports = {
   title: 'Python入門1',
   subtitle: 'データの出力',
   language: 'javascript',
-  defaultValue: `
+  defaultValue: `# -*- coding: utf-8 -*-
 def hello():
   # 文字列"Hello World!"を出力してみよう
 
