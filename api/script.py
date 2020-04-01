@@ -1,4 +1,6 @@
-def hello(a, b):
-  print(a + b)
-  
-hello('hello ', 'python')
+
+def hello():
+  # 文字列"Hello World!"を出力してみよう
+
+hello()
+    

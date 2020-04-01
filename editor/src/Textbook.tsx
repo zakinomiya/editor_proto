@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { TextbookInfo } from './App'
+import { TextbookInfo } from './Content'
 import CodeBlock from './CodeBlock'
 
 type Props = {

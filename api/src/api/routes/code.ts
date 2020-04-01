@@ -6,9 +6,16 @@ const router = Router()
 const execute: RequestHandler = async (req, res) => {
     console.log("Request execute code")
     const { language } = req.params
+    const { lessonId } = req.query
     const { code } = req.body 
 
-    const result = await execCode(language, code)
+    if( !lessonId || !code ) { 
+        const err = new Error("missing param")
+        Object.defineProperty(err, "statusCode", {value: 401})
+        throw err
+    }
+
+    const result = await execCode(language, code, lessonId)
     res.send(result)
 }
 

@@ -1,21 +1,21 @@
 import fs from 'fs'
 import { mapLangInfo, readFileAsync } from '../../../utils'
-import { Textbook } from '../../../type/types'
+import { TextbookInfo } from '../../../type/types'
+import { readTextbookFile } from './service'
 
-export const fetchTextbookInfo = (language: string, index: string): Promise<Textbook> => {
+export const fetchTextbookInfo = async (language: string, lessonId: string): Promise<TextbookInfo> => {
     console.log("start fetching text")
-    const langInfo = mapLangInfo(language)
 
-    const fileName = `${langInfo[0]}_${index}.${langInfo[0]}`
-    return new Promise(async (resolve, reject) => {
-        const textbookInfo = require(`${process.env.PWD}/src/texts/${fileName}`)
-        const markdown = await readFileAsync(`${process.env.PWD}/src/texts/${fileName.split(".")[0]}.md`)
-            .catch(e => {
-                reject(e)
-            })
-
-        if(!markdown) return reject("read file failed")
-
-        resolve({...textbookInfo, markdown})
-    })
+    const extension = mapLangInfo(language)[0]
+    const filePath = `${process.env.PWD}/src/texts/${extension}/${lessonId}`
+    const textbook = await readTextbookFile(filePath)
+        .catch(e => {
+            throw e
+        })
+    const markdown: string = await readFileAsync(`${filePath}/text.md`)
+        .catch(e => {
+            throw e
+        })
+    
+    return {...textbook, markdown}
 }

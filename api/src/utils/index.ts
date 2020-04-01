@@ -11,7 +11,7 @@ export const mapLangInfo = (language: string) => {
     }
 }
 
-export const readFileAsync = async (filePath: string) => await new Promise((resolve, reject) => {
+export const readFileAsync = async (filePath: string): Promise<any> => await new Promise((resolve, reject) => {
     fs.readFile(filePath, (err, data) => {
         if(err) return reject(err)
         if(!data) return reject("read file failed")

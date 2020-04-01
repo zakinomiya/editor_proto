@@ -32,12 +32,12 @@ export default class Router {
   }
 
   errorHandler: ErrorRequestHandler = (
-    error: Error,
+    error: {statusCode: number} & Error,
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
     console.log(error)
-    res.send(error)
+    res.status(error.statusCode || 500).send(error)
   }
 }
