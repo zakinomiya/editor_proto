@@ -17,5 +17,6 @@ hello()
 hello()
 `,
   correctOutput: 'Hello World!',
-  nextLessonId: "002"
+  isNextQuestion: true,
+  nextLessonId: "001"
 }

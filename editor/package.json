@@ -20,6 +20,7 @@
     "react-ace": "^8.1.0",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-icons": "^3.9.0",
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",

@@ -11,7 +11,7 @@ const CodeBlock: React.FC<{ value: string; language: string }> = ({
       value={value}
       fontSize={14}
       showPrintMargin={false}
-      minLines={3}
+      minLines={1}
       maxLines={100}
       readOnly
       showGutter={false}

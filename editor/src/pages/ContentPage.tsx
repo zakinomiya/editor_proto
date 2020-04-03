@@ -1,6 +1,6 @@
 import React from 'react' 
 import {RouteComponentProps} from 'react-router-dom'
-import Content from './Content'
+import Content from '../components/Content'
 
 type Props = {
     language: string

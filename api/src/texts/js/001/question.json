@@ -1,0 +1,23 @@
+{
+    "questionText": "JavaScriptに標準で搭載されている、値を出力する関数は次のうちどれですか?",
+    "answers": [
+        {
+            "index": 0,
+            "text": "console"
+        },
+        {
+            "index": 1,
+            "text": "console.log"
+        },
+        {
+            "index": 2,
+            "text": "consoleLog"
+        },
+        {
+            "index": 3,
+            "text": "log"
+        }
+    ],
+    "correctAnswer": 1,
+    "nextLessonId": "002"
+}

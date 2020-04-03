@@ -1,7 +1,8 @@
 import React from 'react'
-import TopPage from './TopPage'
+import TopPage from './pages/TopPage'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import ContentPage from './ContentPage'
+import ContentPage from './pages/ContentPage'
+import Question from './pages/QuestionPage'
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <Router>
         <Route exact path="/" component={TopPage} />
         <Route exact path="/content/:language/:lessonId" component={ContentPage} />
+        <Route exact path="/question/:language/:lessonId" component={Question} />
       </Router>
     </>
   )

@@ -5,8 +5,7 @@ const router = Router()
 
 const execute: RequestHandler = async (req, res) => {
     console.log("Request execute code")
-    const { language } = req.params
-    const { lessonId } = req.query
+    const { language, lessonId } = req.params
     const { code } = req.body 
 
     if( !lessonId || !code ) { 
@@ -19,6 +18,6 @@ const execute: RequestHandler = async (req, res) => {
     res.send(result)
 }
 
-router.post("/:language", awaitHandler(execute))
+router.post("/:language/:lessonId", awaitHandler(execute))
 
 export default router

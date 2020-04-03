@@ -1,19 +1,18 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { TextbookInfo } from './Content'
 import CodeBlock from './CodeBlock'
 
 type Props = {
-  textbookInfo: TextbookInfo
+  markdown: string 
 }
 
-const Textbook: React.FC<Props> = ({ textbookInfo }) => {
+const MarkdownView: React.FC<Props> = ({ markdown }) => {
     return (
     <ReactMarkdown
-        source={textbookInfo.markdown}
+        source={markdown}
         renderers={{ code: CodeBlock }}
     />
   )
 }
 
-export default Textbook
+export default MarkdownView

@@ -4,8 +4,9 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import axios, { AxiosResponse } from 'axios'
-import Textbook from './Textbook'
-import { RouteComponentProps, Link } from 'react-router-dom'
+import Textbook from './MarkdownView'
+import { Link } from 'react-router-dom'
+import ToastComponent from './Toast'
 
 export type TextbookInfo = {
   title: string
@@ -14,6 +15,7 @@ export type TextbookInfo = {
   markdown: string
   language: string
   answer: string
+  isNextQuestion: boolean
   nextLessonId: string | null
 }
 
@@ -63,7 +65,9 @@ const Content: React.FC<Props> = ({ language, lessonId }) => {
     const res: AxiosResponse<
       CodeResult
     > | void = await axios
-      .post(`api/execute_code/${language}?lessonId=${lessonId}`, { code: value })
+      .post(`api/execute_code/${language}/${lessonId}`, {
+        code: value
+      })
       .catch(e => {
         console.log(e)
       })
@@ -82,7 +86,7 @@ const Content: React.FC<Props> = ({ language, lessonId }) => {
       {textbookInfo && (
         <>
           <Col style={{ width: '100%' }}>
-            <Textbook textbookInfo={textbookInfo} />
+            <Textbook markdown={textbookInfo.markdown} />
           </Col>
           <Col style={{ width: '100%' }}>
             <Row className="pt-2 m-0">
@@ -91,6 +95,17 @@ const Content: React.FC<Props> = ({ language, lessonId }) => {
                 value={showAnswer ? textbookInfo.answer : value}
                 setValue={setValue}
               />
+              {success && <ToastComponent
+                title={'正解'}
+                message={'正解です！次のステップに進みましょう！'}
+                type="success"
+              />}
+              {success === false && <ToastComponent
+                title={'不正解'}
+                message={'もう一度試してみましょう！'}
+                type="fail"
+                closeFunc={() => setSuccess(undefined)}
+              />}
               <div
                 className="d-flex justify-content-end mt-4"
                 style={{ width: '100%' }}
@@ -129,15 +144,14 @@ const Content: React.FC<Props> = ({ language, lessonId }) => {
                 <>
                   {textbookInfo.nextLessonId ? (
                     <Link
-                      to={`/content/${language}/${textbookInfo.nextLessonId}`}
-                      
+                      to={`/${textbookInfo.isNextQuestion ? "question" : "content" }/${language}/${textbookInfo.nextLessonId}`}
                       onClick={() => {
-                        setSuccess(false)
+                        setSuccess(undefined)
                         setResult('')
                         setValue('')
                       }}
                     >
-                      <Button>次のレッスンへ行く</Button>
+                      <Button>{textbookInfo.isNextQuestion ? "復習問題に行く" : "次のレッスンへ行く"}</Button>
                     </Link>
                   ) : (
                     <Link to="/">
