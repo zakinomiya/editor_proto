@@ -13,7 +13,7 @@ type Props = {
 }
 
 const ChoiceCard: React.FC<Props> = ({answer, correctAnswer, selectedAnswer, isCorrect, setSelectedAnswer}) => {
-    const isCorrectAnswer = answer.index = correctAnswer
+    const isCorrectAnswer = answer.index === correctAnswer
 
     return (
         <Card

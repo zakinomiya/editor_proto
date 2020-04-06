@@ -1,10 +1,12 @@
 import React from 'react'
 import AceEditor from 'react-ace'
+import 'ace-builds/src-noconflict/mode-jsx'
 
 const CodeBlock: React.FC<{ value: string; language: string }> = ({
   value,
   language
 }) => {
+  console.log(value)
   return (
     <AceEditor 
       style={{borderRadius: 3, marginBottom: 15}}
@@ -18,11 +20,7 @@ const CodeBlock: React.FC<{ value: string; language: string }> = ({
       highlightActiveLine={false}
       theme="monokai"
       mode={language}
-      setOptions={{
-        showLineNumbers: false,
-        tabSize: 2,
-      }}
-    ></AceEditor>
+    />
   )
 }
 

@@ -65,8 +65,9 @@ const Question: React.FC<Props> = ({ language, lessonId }) => {
         <Col>
           <Card className="border-0">
             <h4 className="blockquote">{questionInfo.questionText}</h4>
-            {questionInfo.answers.map(a => (
+            {questionInfo.answers.map((a, i) => (
               <ChoiceCard
+                key={i}
                 isCorrect={isCorrect}
                 correctAnswer={questionInfo.correctAnswer}
                 answer={a}

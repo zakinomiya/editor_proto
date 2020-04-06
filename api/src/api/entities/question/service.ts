@@ -2,9 +2,9 @@ import { QuestionInfo } from "../../../type/types"
 import fs from 'fs'
 
 type ReadFile<T> = (dirPath: string) => Promise<T>
-type ReadFileHOF = (fileName: string, doParse: boolean) => (dirPath: string) => Promise<any>
+type ReadFileHOF = <T>(fileName: string, shouldParse: boolean) => ReadFile<T>
 
-const readFilePromise: ReadFileHOF = (fileName, doParse) => (dirPath) => 
+const readFilePromise: ReadFileHOF = (fileName, shouldParse) => (dirPath) => 
     new Promise(async (resolve, reject) => {
         fs.readFile(`${dirPath}/${fileName}`, (err, data) => {
             if(err) return reject(err)
@@ -12,9 +12,9 @@ const readFilePromise: ReadFileHOF = (fileName, doParse) => (dirPath) =>
 
             const dataStr = data.toString()
 
-            resolve(doParse ? JSON.parse(dataStr) : dataStr)
+            resolve(shouldParse ? JSON.parse(dataStr) : dataStr)
         })
     })
 
-export const readQuestionFile: ReadFile<QuestionInfo> = (dirPath) => readFilePromise('question.json', true)(dirPath)
-export const readAnswerFile: ReadFile<string> = (dirPath) => readFilePromise('answer.md', false)(dirPath)
+export const readQuestionFile = (dirPath: string) => readFilePromise<QuestionInfo>('question.json', true)(dirPath)
+export const readAnswerFile= (dirPath: string) => readFilePromise<string>('answer.md', false)(dirPath)

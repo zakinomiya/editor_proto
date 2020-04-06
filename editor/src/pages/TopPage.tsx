@@ -6,7 +6,7 @@ import LanguageCard from '../components/LanguageCard'
 import {Link} from 'react-router-dom'
 import '../stylesheet.css'
 
-const TopPage = () => {
+const TopPage: React.FC = () => {
   return (
     <Container
       style={{ height: '100vh' }}
@@ -14,12 +14,12 @@ const TopPage = () => {
     >
       <Row>
         <Col className="d-flex justify-content-center align-items-center m-4">
-            <Link to="/content/javascript/001" className="link">
+            <Link to="/language/javascript" className="link">
                 <LanguageCard src={require("../static/logo-javascript.png")} language="javascript"/>
             </Link>
         </Col>
         <Col className="d-flex justify-content-center align-items-center m-4">
-            <Link to="/content/python/001" className="link">
+            <Link to="/language/python" className="link">
                 <LanguageCard src={require("../static/logo-python.png")} language="python"/>
             </Link>
         </Col>
