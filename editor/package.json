@@ -13,7 +13,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-css-only": "^4.4.1",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "highlightjs": "^9.16.2",
     "marked": "^0.8.2",
     "react": "^16.13.1",
