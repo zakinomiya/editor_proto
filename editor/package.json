@@ -15,7 +15,7 @@
     "bootstrap-css-only": "^4.4.1",
     "highlight.js": "^9.18.1",
     "highlightjs": "^9.16.2",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "react": "^16.13.1",
     "react-ace": "^8.1.0",
     "react-bootstrap": "^1.0.0",
